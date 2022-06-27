@@ -14,6 +14,7 @@ class ToDoList extends StatefulWidget {
 }
 
 class _ToDoListState extends State<ToDoList> {
+
   void checkBoxCallBack(bool? checkBoxState) {
     if (checkBoxState != null) {
       setState(() {});

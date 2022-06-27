@@ -22,7 +22,7 @@ class PostPage extends StatelessWidget {
         child: Scaffold(
           backgroundColor: bodybgColor,
           appBar: appBar(),
-          body: const PostsList(),
+          body: PostsList(),
         ),
       ),
     );

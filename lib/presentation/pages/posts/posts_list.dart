@@ -5,9 +5,34 @@ import '../../bloc/posts/posts_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../comments/comments_page.dart';
+//
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class PostsList extends StatelessWidget {
-  const PostsList({Key? key}) : super(key: key);
+  PostsList({Key? key}) : super(key: key);
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  void showNotification(BuildContext context, postId, title) {
+    flutterLocalNotificationsPlugin.show(
+      0,
+      "Post ID: $postId",
+      "Post title is $title",
+      const NotificationDetails(
+        // android: AndroidNotificationDetails(channel.id, channel.name, channel.description,
+        android: AndroidNotificationDetails(
+          '1',
+          '2',
+          importance: Importance.high,
+          color: Colors.blue,
+          playSound: true,
+          icon: '@mipmap/ic_launcher',
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +68,7 @@ class PostsList extends StatelessWidget {
             // itemCount: snapshot.data?,
             itemBuilder: (BuildContext context, int index) {
               return InkWell(
-                onTap: () {
+                onTap: () async {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -52,9 +77,9 @@ class PostsList extends StatelessWidget {
                         title: state.loadedPosts[index].title,
                         body: state.loadedPosts[index].body,
                       ),
-                      
                     ),
                   );
+                  showNotification(context, state.loadedPosts[index].id,state.loadedPosts[index].title);
                   // CommentsScreen
                 },
                 child: Container(

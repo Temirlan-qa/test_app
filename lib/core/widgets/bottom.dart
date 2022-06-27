@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import '../../presentation/pages/gallery/gallery_page.dart';
 import '../../presentation/pages/posts/posts_page.dart';
@@ -13,6 +14,26 @@ class Bottom extends StatefulWidget {
 }
 
 class _BottomState extends State<Bottom> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    //Foreground work
+    FirebaseMessaging.instance.getInitialMessage();
+    FirebaseMessaging.onMessage.listen((event) {
+      if (event.notification != null) {
+        print(event.notification!.body);
+        print(event.notification!.title);
+      }
+    });
+
+    // When the app is in background but opened and user taps
+    // on the notifi.
+    FirebaseMessaging.onMessageOpenedApp.listen((event) {
+      print(event.data['route']);
+    });
+  }
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     PostPage(),

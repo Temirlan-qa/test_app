@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:test_app/presentation/pages/map.dart';
 import '../../core/utils/colors.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -18,8 +19,7 @@ class ProfileScreen extends StatefulWidget {
       required this.phone_number,
       required this.web_site,
       required this.address,
-      required this.company
-      })
+      required this.company})
       : super(key: key);
 
   @override
@@ -27,7 +27,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
   @override
   Widget build(BuildContext context) {
     // late TextEditingController company_controller = TextEditingController(text: widget.email);
@@ -97,6 +96,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
               textFieldCompany(text: widget.company),
               sizedBoxHigh18(),
               textFieldAdress(text: widget.address),
+
+              // MapPage()
+              RaisedButton(
+                child: const Text('Map withoout your location'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MapPage(),
+                    ),
+                  );
+                },
+              )
             ],
           ),
         ),
@@ -104,9 +116,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
-
-
-
 
 Container avatar() {
   return Container(
@@ -139,7 +148,8 @@ SizedBox sizedBoxHigh18() {
 }
 
 TextField textFieldEmail({required String text}) {
-  late TextEditingController emailcontroller = TextEditingController(text: text);
+  late TextEditingController emailcontroller =
+      TextEditingController(text: text);
   return TextField(
     controller: emailcontroller,
     style: const TextStyle(
@@ -171,7 +181,8 @@ TextField textFieldEmail({required String text}) {
 }
 
 TextField textFieldPhone({required String text}) {
-  late TextEditingController phone_number_controller = TextEditingController(text: text);
+  late TextEditingController phone_number_controller =
+      TextEditingController(text: text);
   return TextField(
     readOnly: true,
     controller: phone_number_controller,
@@ -203,7 +214,8 @@ TextField textFieldPhone({required String text}) {
 }
 
 TextField textFieldWeb({required String text}) {
-  late TextEditingController web_site_controller = TextEditingController(text: text);
+  late TextEditingController web_site_controller =
+      TextEditingController(text: text);
   return TextField(
     readOnly: true,
     controller: web_site_controller,

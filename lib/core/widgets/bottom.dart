@@ -1,10 +1,14 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../../presentation/pages/gallery/gallery_page.dart';
 import '../../presentation/pages/posts/posts_page.dart';
 import '../../presentation/pages/todo/todo_page.dart';
 import '../../presentation/pages/users/contacts.dart';
 import '../../presentation/pages/users/user_page.dart';
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 class Bottom extends StatefulWidget {
   const Bottom({Key? key}) : super(key: key);
@@ -16,24 +20,55 @@ class Bottom extends StatefulWidget {
 class _BottomState extends State<Bottom> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
-    //Foreground work
     FirebaseMessaging.instance.getInitialMessage();
-    FirebaseMessaging.onMessage.listen((event) {
-      if (event.notification != null) {
-        print(event.notification!.body);
-        print(event.notification!.title);
+
+    FirebaseMessaging.onMessage.listen((message) {
+      if (message.notification != null) {
+        print(message.notification!.title);
+        print(message.notification!.body);
+        flutterLocalNotificationsPlugin.show(
+          1,
+          message.notification!.title,
+          message.notification!.body,
+          const NotificationDetails(
+            // android: AndroidNotificationDetails(channel.id, channel.name, channel.description,
+            android: AndroidNotificationDetails(
+              '1',
+              '2',
+              importance: Importance.high,
+              color: Colors.blue,
+              playSound: true,
+              icon: '@mipmap/ic_launcher',
+            ),
+          ),
+        );
       }
     });
-
-    // When the app is in background but opened and user taps
-    // on the notifi.
-    FirebaseMessaging.onMessageOpenedApp.listen((event) {
-      print(event.data['route']);
-    });
   }
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+
+  //   FirebaseMessaging.instance.getToken().then((value) {
+  //     print("FIREBASE TOKEN: $value");
+  //   });
+
+  //   //Foreground work
+  //   FirebaseMessaging.instance.getInitialMessage();
+  //   FirebaseMessaging.onMessage.listen((massage) {
+  //     print(massage.notification!.body);
+  //     print(massage.notification!.title);
+  //   });
+
+  //   // When the app is in background but opened and user taps
+  //   // on the notifi.
+  //   FirebaseMessaging.onMessageOpenedApp.listen((massage) {
+  //     print(massage.data['route']);
+  //   });
+  // }
+
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     PostPage(),

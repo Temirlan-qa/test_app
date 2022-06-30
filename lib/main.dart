@@ -5,15 +5,15 @@ import 'core/widgets/bottom.dart';
 import 'injection.dart' as di;
 
 // Receive message when app is in background solution for on message
-Future<void> backgroundHandler(RemoteMessage message) async{
-  print(message.data.toString());
-  print(message.notification!.title);
-  print(message.notification!.body);
-}
+// Future<void> backgroundHandler(RemoteMessage message) async{
+//   print(message.data.toString());
+//   print(message.notification!.title);
+//   print(message.notification!.body);
+// }
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  FirebaseMessaging.onBackgroundMessage(backgroundHandler);
+  // FirebaseMessaging.onBackgroundMessage(backgroundHandler);
   di.init();
   runApp(const MyApp());
 }

@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'package:shimmer/shimmer.dart';
+
 import '../../../core/utils/colors.dart';
 import '../../bloc/comments/comments_bloc.dart';
 import '../../bloc/comments/comments_state.dart';
@@ -39,7 +41,7 @@ class _CommentsListScreenState extends State<CommentsListScreen> {
         }
 
         if (state is CommentsLoadingState) {
-          return const Center(child: CircularProgressIndicator());
+          return getShimmerLoading();
         }
 
         if (state is CommentsLoadedState) {
@@ -233,6 +235,59 @@ class _CommentsListScreenState extends State<CommentsListScreen> {
       },
     );
   }
+}
+
+Shimmer getShimmerLoading() {
+  return Shimmer.fromColors(
+    baseColor: Colors.white,
+    highlightColor: const Color(0xFF221C44),
+    child: Container(
+      padding: const EdgeInsets.only(left: 16, top: 33, right: 16),
+      child: Column(
+        children: [
+          Container(
+            width: 340,
+            height: 10,
+            color: Colors.white,
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          Container(
+            width: 340,
+            height: 50,
+            color: Colors.white,
+          ),
+          const SizedBox(
+            height: 32,
+          ),
+          Container(
+            height: 165,
+            padding: const EdgeInsets.all(16),
+            decoration: const BoxDecoration(
+              color: Color(0xFF221C44),
+              borderRadius: BorderRadius.all(
+                Radius.circular(5),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          Container(
+            height: 165,
+            padding: const EdgeInsets.all(16),
+            decoration: const BoxDecoration(
+              color: Color(0xFF221C44),
+              borderRadius: BorderRadius.all(
+                Radius.circular(5),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
 Icon icon() {

@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'package:shimmer/shimmer.dart';
+
 import '../../../core/utils/colors.dart';
 import '../../bloc/posts/posts_bloc.dart';
 import '../../bloc/posts/posts_state.dart';
@@ -55,7 +57,7 @@ class PostsList extends StatelessWidget {
         }
 
         if (state is PostsLoadingState) {
-          return const Center(child: CircularProgressIndicator());
+          return getShimmerLoading();
         }
 
         if (state is PostsLoadedState) {
@@ -79,11 +81,12 @@ class PostsList extends StatelessWidget {
                       ),
                     ),
                   );
-                  showNotification(context, state.loadedPosts[index].id,state.loadedPosts[index].title);
+                  showNotification(context, state.loadedPosts[index].id,
+                      state.loadedPosts[index].title);
                   // CommentsScreen
                 },
                 child: Container(
-                  // height: 95,
+                  // height: 160,
                   // width: 358,
                   padding: const EdgeInsets.all(16),
                   decoration: const BoxDecoration(
@@ -145,11 +148,61 @@ class PostsList extends StatelessWidget {
   }
 }
 
-Icon icon() {
-  return const Icon(
-    Icons.person,
-    size: 16,
-    color: Color(0xFF979797),
+Shimmer getShimmerLoading() {
+  return Shimmer.fromColors(
+    baseColor: Colors.white,
+    highlightColor: const Color(0xFF221C44),
+    child: ListView.separated(
+      padding: const EdgeInsets.all(16),
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
+      itemCount: 20,
+      itemBuilder: (BuildContext context, int index) {
+        return InkWell(
+          child: Container(
+            height: 160,
+            padding: const EdgeInsets.all(16),
+            decoration: const BoxDecoration(
+              color: Color(0xFF221C44),
+              borderRadius: BorderRadius.all(
+                Radius.circular(5),
+              ),
+            ),
+            child: Column(
+              children: const [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    '',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: white,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Raleway',
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    '',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: white,
+                      fontWeight: FontWeight.w400,
+                      fontFamily: 'Raleway',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
   );
 }
 

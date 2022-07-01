@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:shimmer/shimmer.dart';
+
 import '../../../core/utils/colors.dart';
 import '../profile.dart';
 import '../../bloc/user/user_bloc.dart';
@@ -31,7 +33,7 @@ class UserList extends StatelessWidget {
         }
 
         if (state is UserLoadingState) {
-          return const Center(child: CircularProgressIndicator());
+          return getShimmerLoading();
         }
 
         if (state is UserLoadedState) {
@@ -77,10 +79,7 @@ class UserList extends StatelessWidget {
           return const Center(
             child: Text(
               'Error fetching users',
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.white
-              ),
+              style: TextStyle(fontSize: 20.0, color: Colors.white),
             ),
           );
         }
@@ -88,6 +87,33 @@ class UserList extends StatelessWidget {
       },
     );
   }
+}
+
+Shimmer getShimmerLoading() {
+  return Shimmer.fromColors(
+    baseColor: Colors.white,
+    highlightColor: Colors.white70,
+    child: ListView.separated(
+      separatorBuilder: (BuildContext context, int index) => const Divider(
+        height: 18,
+      ),
+      padding: const EdgeInsets.all(16),
+      itemCount: 20,
+      itemBuilder: (BuildContext context, int index) {
+        return ListTile(
+          leading: icon(),
+          title: const Text(
+            '',
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'Raleway',
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        );
+      },
+    ),
+  );
 }
 
 Icon icon() {

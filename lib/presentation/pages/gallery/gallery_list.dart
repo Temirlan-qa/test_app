@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'package:shimmer/shimmer.dart';
+
 import '../../bloc/gallery/gallery_bloc.dart';
 import '../../bloc/gallery/gallery_state.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ class GalleryListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return BlocConsumer<GalleryBloc, GalleryState>(
       listener: ((context, state) {
         log(state.toString());
@@ -29,7 +32,7 @@ class GalleryListScreen extends StatelessWidget {
         }
 
         if (state is GalleryLoadingState) {
-          return const Center(child: CircularProgressIndicator());
+          return getShimmerLoading(height);
         }
 
         if (state is GalleryLoadedState) {
@@ -111,3 +114,60 @@ class GalleryListScreen extends StatelessWidget {
   }
 }
 
+Shimmer getShimmerLoading(height) {
+  return Shimmer.fromColors(
+    baseColor: Colors.white,
+    highlightColor: const Color(0xFF221C44),
+    child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200,
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8,
+                childAspectRatio: 1 / 1,
+              ),
+              itemCount: 40,
+              itemBuilder: (BuildContext ctx, index) {
+                return Container(
+                  height: height * 2.5,
+                  decoration: const BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5),
+                    ),
+                  ),
+                  child: InkWell(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        right: 16,
+                        left: 16,
+                        bottom: 8,
+                        top: 120,
+                      ),
+                      child: Column(
+                        children: const [
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                '',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'Raleway',
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+  );
+}

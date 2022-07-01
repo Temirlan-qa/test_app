@@ -43,6 +43,8 @@ dependencies:
   firebase_core: ^1.18.0
   # yandex map
   yandex_mapkit: ^3.0.1
+  #
+  shimmer: ^2.0.0
   
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'package:shimmer/shimmer.dart';
+
 import '../../../core/utils/colors.dart';
 import '../../bloc/todo/todo_bloc.dart';
 import '../../bloc/todo/todo_state.dart';
@@ -14,7 +16,6 @@ class ToDoList extends StatefulWidget {
 }
 
 class _ToDoListState extends State<ToDoList> {
-
   void checkBoxCallBack(bool? checkBoxState) {
     if (checkBoxState != null) {
       setState(() {});
@@ -23,6 +24,8 @@ class _ToDoListState extends State<ToDoList> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     Color getColor(Set<MaterialState> states) {
       const Set<MaterialState> interactiveStates = <MaterialState>{
         MaterialState.pressed,
@@ -52,7 +55,7 @@ class _ToDoListState extends State<ToDoList> {
         }
 
         if (state is ToDoLoadingState) {
-          return const Center(child: CircularProgressIndicator());
+          return getShimmerLoading(width,height);
         }
 
         if (state is ToDoLoadedState) {
@@ -102,7 +105,6 @@ class _ToDoListState extends State<ToDoList> {
             },
           );
         }
-// state.loadedPosts[index].title,
         if (state is ToDoErrorState) {
           return const Center(
             child: Text(
@@ -122,5 +124,40 @@ Icon icon() {
     Icons.person,
     size: 16,
     color: Color(0xFF979797),
+  );
+}
+
+Shimmer getShimmerLoading(width,hight) {
+  return Shimmer.fromColors(
+    baseColor: Colors.white,
+    highlightColor: const Color(0xFF221C44),
+    child: ListView.builder(
+      itemCount: 40,
+      itemBuilder: (BuildContext context, int index) {
+        return SingleChildScrollView(
+          child: Container(
+            margin: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+              top: 16,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Icon(Icons.check_box_outline_blank),
+                const SizedBox(
+                  width: 5,
+                ),
+                Container(
+                  width: width -100 ,
+                  height: 10,
+                  color: Colors.white,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
   );
 }

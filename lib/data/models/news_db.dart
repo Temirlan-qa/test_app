@@ -1,14 +1,9 @@
-// https://jsonplaceholder.typicode.com/posts
 import 'package:json_annotation/json_annotation.dart';
 part 'news_db.g.dart';
 
 @JsonSerializable()
 class NewsList {
-  /// The generated code assumes these values exist in JSON.
   final String title, body;
-
-  /// The generated code below handles if the corresponding JSON value doesn't
-  /// exist or is empty.
   final int id ;
 
   NewsList({required this.title, required this.body,required this.id});

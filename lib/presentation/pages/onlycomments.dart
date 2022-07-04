@@ -48,7 +48,6 @@ class _OnlyCommentsScreenState extends State<OnlyCommentsScreen> {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              // colors: <Color>[Colors.black,Colors.white,]
               colors: appbarColor,
             ),
           ),

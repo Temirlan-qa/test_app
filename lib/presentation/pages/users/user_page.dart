@@ -8,9 +8,6 @@ import 'user_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-
-  // final userRepository = UserRepository();
-
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider(
@@ -31,14 +28,11 @@ class HomePage extends StatelessWidget {
 
 AppBar appBar() {
   return AppBar(
-    // backgroundColor: Color(0xFF322C54),
-    //  #322C54 ,#231D49
     flexibleSpace: Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          // colors: <Color>[Colors.black,Colors.white,]
           colors: appbarColor,
         ),
       ),

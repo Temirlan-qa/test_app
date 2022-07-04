@@ -4,9 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:test_app/data/models/news_db.dart';
 
 class PostsProvider {
-
-  // https://jsonplaceholder.typicode.com/posts
-
   Future<List<NewsList>> getNews() async {
     final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
 

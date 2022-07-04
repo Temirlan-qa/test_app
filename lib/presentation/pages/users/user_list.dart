@@ -126,14 +126,11 @@ Icon icon() {
 
 AppBar appBar() {
   return AppBar(
-    // backgroundColor: Color(0xFF322C54),
-    //  #322C54 ,#231D49
     flexibleSpace: Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          // colors: <Color>[Colors.black,Colors.white,]
           colors: appbarColor,
         ),
       ),

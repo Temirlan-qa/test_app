@@ -9,9 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GalleryPage extends StatelessWidget {
   const GalleryPage({Key? key}) : super(key: key);
-
-  // final userRepository = UserRepository();
-
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider(

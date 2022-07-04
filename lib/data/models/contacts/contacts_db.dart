@@ -1,4 +1,3 @@
-// https://jsonplaceholder.typicode.com/posts
 import 'package:json_annotation/json_annotation.dart';
 import 'package:test_app/data/models/contacts/company.dart';
 import 'adress.dart';

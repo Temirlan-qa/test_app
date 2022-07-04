@@ -1,6 +1,4 @@
-// ...Screen
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import '../../../../data/models/check_db.dart';
 import '../../../../data/datasources/chapter.dart';
@@ -36,8 +34,6 @@ class _CheckScreenState extends State<CheckScreen> {
       setState(() {});
     }
   }
-
-// DADADA
   @override
   Widget build(BuildContext context) {
     Color getColor(Set<MaterialState> states) {
@@ -75,7 +71,6 @@ class _CheckScreenState extends State<CheckScreen> {
                         true == characterList[index].completed ? true : false,
                     onChanged: checkBoxCallBack,
                     checkColor: bodybgColor,
-                    // activeColor: const Color(0xFF6C63FF),
                   ),
                   const SizedBox(
                     width: 5,
@@ -103,14 +98,11 @@ class _CheckScreenState extends State<CheckScreen> {
 
 AppBar appBar() {
   return AppBar(
-    // backgroundColor: Color(0xFF322C54),
-    //  #322C54 ,#231D49
     flexibleSpace: Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          // colors: <Color>[Colors.black,Colors.white,]
           colors: appbarColor,
         ),
       ),

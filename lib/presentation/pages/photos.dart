@@ -1,4 +1,3 @@
-// ...Screen
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -43,14 +42,11 @@ class _PhotoScreenState extends State<PhotoScreen> {
     return Scaffold(
       backgroundColor: bodybgColor,
       appBar: AppBar(
-        // backgroundColor: Color(0xFF322C54),
-        //  #322C54 ,#231D49
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              // colors: <Color>[Colors.black,Colors.white,]
               colors: appbarColor,
             ),
           ),
@@ -81,7 +77,6 @@ class _PhotoScreenState extends State<PhotoScreen> {
             crossAxisSpacing: 6,
             childAspectRatio: 1 / 1,
           ),
-          // crossAxisCount: 3,
           itemCount: photoList.length,
           itemBuilder: (BuildContext ctx, index) {
             return Container(

@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:test_app/presentation/pages/map.dart';
 import '../../core/utils/colors.dart';
@@ -11,7 +9,6 @@ class ProfileScreen extends StatefulWidget {
   final String web_site;
   final String address;
   final String company;
-  // final String adress;
   const ProfileScreen(
       {Key? key,
       required this.name,
@@ -21,7 +18,6 @@ class ProfileScreen extends StatefulWidget {
       required this.address,
       required this.company})
       : super(key: key);
-
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
@@ -29,7 +25,6 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    // late TextEditingController company_controller = TextEditingController(text: widget.email);
     return Scaffold(
       backgroundColor: bodybgColor,
       appBar: AppBar(
@@ -96,8 +91,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               textFieldCompany(text: widget.company),
               sizedBoxHigh18(),
               textFieldAdress(text: widget.address),
-
-              // MapPage()
               RaisedButton(
                 child: const Text('Map withoout your location'),
                 onPressed: () {
@@ -167,7 +160,6 @@ TextField textFieldEmail({required String text}) {
         fontSize: 12,
         fontWeight: FontWeight.w500,
       ),
-      // hintText: 'ripper228_1337@gmail.com',
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(8)),
         borderSide: BorderSide(color: Color(0xFF7F78A7), width: 1.0),
@@ -200,7 +192,6 @@ TextField textFieldPhone({required String text}) {
         fontSize: 12,
         fontWeight: FontWeight.w500,
       ),
-      // hintText: 'ripper228_1337@gmail.com',
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(8)),
         borderSide: BorderSide(color: Color(0xFF7F78A7), width: 1.0),
@@ -265,7 +256,6 @@ TextField textFieldCompany({required String text}) {
         fontSize: 12,
         fontWeight: FontWeight.w500,
       ),
-      // hintText: 'ripper228_1337@gmail.com',
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(8)),
         borderSide: BorderSide(color: Color(0xFF7F78A7), width: 1.0),
@@ -297,7 +287,6 @@ TextField textFieldAdress({required String text}) {
         fontSize: 12,
         fontWeight: FontWeight.w500,
       ),
-      // hintText: 'ripper228_1337@gmail.com',
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(8)),
         borderSide: BorderSide(color: Color(0xFF7F78A7), width: 1.0),

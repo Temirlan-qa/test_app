@@ -47,10 +47,6 @@ class _MapPageState extends State<MapPage> {
 
   void _onMapCreated(YandexMapController controller) {
     _completer.complete(controller);
-    
-    // controller.getPoint(
-    //   ScreenPoint(x: 43.238949, y: 76.889709)
-    // );
     controller.moveCamera(
       CameraUpdate.newBounds(
         const BoundingBox(

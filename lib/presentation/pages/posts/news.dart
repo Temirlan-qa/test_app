@@ -37,10 +37,8 @@ class _NewsScreenState extends State<NewsScreen> {
       appBar: appBar(),
       body: ListView.separated(
         padding: const EdgeInsets.all(16),
-        // itemBuilder:
         separatorBuilder: (BuildContext context, int index) => const Divider(),
         itemCount: characterList.length,
-        // itemCount: snapshot.data?,
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
             onTap: () {
@@ -54,11 +52,8 @@ class _NewsScreenState extends State<NewsScreen> {
                   ),
                 ),
               );
-              // CommentsScreen
             },
             child: Container(
-              // height: 95,
-              // width: 358,
               padding: const EdgeInsets.all(16),
               decoration: const BoxDecoration(
                 color: Color(0xFF221C44),
@@ -66,7 +61,6 @@ class _NewsScreenState extends State<NewsScreen> {
                   Radius.circular(5),
                 ),
               ),
-              // padding: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 children: [
                   Align(
@@ -109,14 +103,11 @@ class _NewsScreenState extends State<NewsScreen> {
 
 AppBar appBar() {
   return AppBar(
-    // backgroundColor: Color(0xFF322C54),
-    //  #322C54 ,#231D49
     flexibleSpace: Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          // colors: <Color>[Colors.black,Colors.white,]
           colors: appbarColor,
         ),
       ),

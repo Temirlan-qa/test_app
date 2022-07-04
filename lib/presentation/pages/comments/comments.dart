@@ -62,14 +62,11 @@ class _CommentsScreenState extends State<CommentsScreen> {
     return Scaffold(
       backgroundColor: bodybgColor,
       appBar: AppBar(
-        // backgroundColor: Color(0xFF322C54),
-        //  #322C54 ,#231D49
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              // colors: <Color>[Colors.black,Colors.white,]
               colors: appbarColor,
             ),
           ),
@@ -91,7 +88,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
         padding: const EdgeInsets.only(left: 16, top: 33, right: 16),
         child: Column(
           children: [
-            // Title
             Text(
               widget.title,
               style: const TextStyle(
@@ -107,7 +103,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
             Align(
               alignment: Alignment.topLeft,
               child: Text(
-                // body
                 widget.body,
                 style: const TextStyle(
                   color: Colors.white,
@@ -144,7 +139,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
                       Row(
                         children: [
                           CircleAvatar(
-                            // 263238
                             backgroundColor:
                                 const Color(0xFF263238).withOpacity(0.38),
                             child: const Icon(
@@ -187,7 +181,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
               },
             ),
             const Spacer(),
-            // Show more
             Container(
               padding: const EdgeInsets.only(
                 top: 8,

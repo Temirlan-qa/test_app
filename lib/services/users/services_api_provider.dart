@@ -4,8 +4,6 @@ import 'package:http/http.dart' as http;
 
 class UserProvider {
 
-  // https://jsonplaceholder.typicode.com/users
-
   Future<List<ContactsList>> getContactsList() async {
     final response = await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'));
 

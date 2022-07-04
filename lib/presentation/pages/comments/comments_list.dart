@@ -53,7 +53,6 @@ class _CommentsListScreenState extends State<CommentsListScreen> {
                 padding: const EdgeInsets.only(left: 16, top: 33, right: 16),
                 child: Column(
                   children: <Widget>[
-                    // Title
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text(
@@ -72,7 +71,6 @@ class _CommentsListScreenState extends State<CommentsListScreen> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        // body
                         widget.body,
                         style: const TextStyle(
                           color: Colors.white,

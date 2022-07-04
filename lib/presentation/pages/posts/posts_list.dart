@@ -1,15 +1,11 @@
 import 'dart:developer';
 import 'package:shimmer/shimmer.dart';
-
 import '../../../core/utils/colors.dart';
 import '../../bloc/posts/posts_bloc.dart';
 import '../../bloc/posts/posts_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../comments/comments_page.dart';
-//
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class PostsList extends StatelessWidget {
@@ -23,7 +19,6 @@ class PostsList extends StatelessWidget {
       "Post ID: $postId",
       "Post title is $title",
       const NotificationDetails(
-        // android: AndroidNotificationDetails(channel.id, channel.name, channel.description,
         android: AndroidNotificationDetails(
           '1',
           '2',
@@ -133,7 +128,6 @@ class PostsList extends StatelessWidget {
             },
           );
         }
-// state.loadedPosts[index].title,
         if (state is PostsErrorState) {
           return const Center(
             child: Text(
@@ -208,14 +202,11 @@ Shimmer getShimmerLoading() {
 
 AppBar appBar() {
   return AppBar(
-    // backgroundColor: Color(0xFF322C54),
-    //  #322C54 ,#231D49
     flexibleSpace: Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          // colors: <Color>[Colors.black,Colors.white,]
           colors: appbarColor,
         ),
       ),

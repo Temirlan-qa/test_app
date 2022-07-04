@@ -1,14 +1,9 @@
-// https://jsonplaceholder.typicode.com/posts
 import 'package:json_annotation/json_annotation.dart';
 part 'gallery_db.g.dart';
 
 @JsonSerializable()
 class GalleryList {
-  /// The generated code assumes these values exist in JSON.
   final String title;
-
-  /// The generated code below handles if the corresponding JSON value doesn't
-  /// exist or is empty.
   final int id ;
 
   GalleryList({required this.title,required this.id});

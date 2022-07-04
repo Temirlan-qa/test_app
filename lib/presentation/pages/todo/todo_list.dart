@@ -1,12 +1,10 @@
 import 'dart:developer';
 import 'package:shimmer/shimmer.dart';
-
 import '../../../core/utils/colors.dart';
 import '../../bloc/todo/todo_bloc.dart';
 import '../../bloc/todo/todo_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../data/models/check_db.dart';
 
 class ToDoList extends StatefulWidget {
   const ToDoList({Key? key}) : super(key: key);
@@ -82,7 +80,6 @@ class _ToDoListState extends State<ToDoList> {
                             : false,
                         onChanged: checkBoxCallBack,
                         checkColor: bodybgColor,
-                        // activeColor: const Color(0xFF6C63FF),
                       ),
                       const SizedBox(
                         width: 5,
